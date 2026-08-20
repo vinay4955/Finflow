@@ -2,7 +2,6 @@
 
 **Group 1 · AIDA2 — Data Platform Architectures**
 **Platform:** Apache Kafka 3-broker KRaft cluster + Kafka UI
-**Lecture 5 Presentation Stack**
 
 ---
 
