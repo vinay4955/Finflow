@@ -156,6 +156,14 @@ services:
     environment:
       KAFKA_CLUSTERS_0_NAME: finflow-kafka
       KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: broker-1:29092,broker-2:29092,broker-3:29092
+    healthcheck:
+      # The image ships wget but NOT curl. Spring Boot actuator answers
+      # {"status":"UP"} once the UI has connected to the cluster.
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8080/actuator/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
     deploy:
       resources:
         limits:
